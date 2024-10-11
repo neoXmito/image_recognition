@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 # Load your Keras model
-model_path = 'Project1\ClassificationProject\models\my_first_model.keras'  # Update with your relative model path if stored locally
+model_path = r'Project1\ClassificationProject\models\my_first_model.keras'  # Update with your relative model path if stored locally
 model = load_model(model_path)
 
 # Set up Streamlit interface
