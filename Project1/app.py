@@ -3,18 +3,18 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
-# Load your Keras model
+# Loading my Keras model
 model_path = 'Project1/ClassificationProject/models/my_first_model.keras'  # Update with your relative model path if stored locally
 model = load_model(model_path)
 
-# Define the class names in the desired order
+# the classes names
 class_names = ["daisy", "dandelion", "rose", "sunflower", "tulip"]
 
-# Set up Streamlit interface
+#  Streamlit interface
 st.title("Flower Image Recognition Keras Model Prediction App")
 
 # File uploader for images
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader("Please choose an image.......", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     # Load the image and preprocess it
@@ -32,4 +32,4 @@ if uploaded_file is not None:
 
     # Display results
     st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
-    st.write(f"Predicted class: {predicted_class_name}")
+    st.write(f"Flower prediction : {predicted_class_name}")
