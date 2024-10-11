@@ -7,6 +7,9 @@ from tensorflow.keras.preprocessing import image
 model_path = 'Project1/ClassificationProject/models/my_first_model.keras'  # Update with your relative model path if stored locally
 model = load_model(model_path)
 
+# Define the class names in the desired order
+class_names = ["daisy", "dandelion", "rose", "sunflower", "tulip"]
+
 # Set up Streamlit interface
 st.title("Flower Image Recognition Keras Model Prediction App")
 
@@ -22,8 +25,11 @@ if uploaded_file is not None:
 
     # Make prediction
     prediction = model.predict(img_array)
-    predicted_class = np.argmax(prediction, axis=1)  # Get class index
+    predicted_class_index = np.argmax(prediction, axis=1)[0]  # Get class index
+
+    # Map predicted index to the class name
+    predicted_class_name = class_names[predicted_class_index]
 
     # Display results
     st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
-    st.write(f"Predicted class: {predicted_class[0]}")
+    st.write(f"Predicted class: {predicted_class_name}")
